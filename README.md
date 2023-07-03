@@ -67,7 +67,7 @@ after the dependencies are installed, type `npm start` and visit the version 1.0
 ![blessme247](https://avatars.githubusercontent.com/u/67491400?v=4)
 
 
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Abraham Solabi](https://github.com/blessme247)
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Abraham Solabi](https://github.com/blessme247)
 
 ### Enquiries
 
