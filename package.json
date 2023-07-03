@@ -1,0 +1,55 @@
+{
+  "name": "movie-smart",
+  "version": "1.0.0",
+  "description": "Movie Smart is a movie streaming API with admin access to upload movies and change relevant data built with the express framework of nodejs, it was built for the [**treblle**](https://treblle.com) API security hackathon that commenced from the 3rd of July through the 7th of July.",
+  "main": "./bin/www.js",
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smartbizlord/trebble-api-security-hackathon-2023.git"
+  },
+  "keywords": [
+    "api",
+    "security",
+    "hackathon",
+    "express",
+    "node",
+    "mongodb",
+    "redis",
+    "smartbizlord"
+  ],
+  "author": "Smartbizlord",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smartbizlord/trebble-api-security-hackathon-2023/issues"
+  },
+  "homepage": "https://github.com/smartbizlord/trebble-api-security-hackathon-2023#readme",
+  "dependencies": {
+    "@treblle/express": "^0.0.6",
+    "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "dotenv": "^16.0.3",
+    "express": "~4.16.1",
+    "express-mongo-sanitize": "^2.2.0",
+    "express-rate-limit": "^6.7.0",
+    "express-redis-cache": "^1.1.3",
+    "helmet": "^6.0.1",
+    "http-errors": "~1.6.3",
+    "http-status": "^1.5.3",
+    "joi": "^17.7.0",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.4",
+    "mongoose": "^6.8.0",
+    "morgan": "~1.9.1",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.8.0",
+    "redis": "^4.6.7",
+    "winston": "^3.8.2",
+    "xss-clean": "^0.1.1"
+  }
+}
