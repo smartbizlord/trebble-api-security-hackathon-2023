@@ -14,32 +14,26 @@ To clone this repository, you can head over to [GitHub Repository](https://githu
 - mongoDB
 - .env (Environment Variables)
 
-| Variable | Data Type |
-| ----------- | ----------- |
-| PORT | Number |
-| BASE_URL | String |
-| NODE_ENV | String |
-| MONGODB_URL | String |
-| DB_URL | String |
-| DB_HOST | String |
-| DB_NAME | String |
-| DB_USER | String |
-| DB_PASSWORD | String |
-| DIALECT | String |
-| thumbnails_path | String |
-| movies_path | String |
-| JWT_SECRET | String |
-| JWT_ACCESS_EXPIRATION_MINUTES | Number |
-| JWT_REFRESH_EXPIRATION_DAYS | Number |
-| JWT_RESET_PASSWORD_EXPIRATION_MINUTES | Number |
-| JWT_VERIFY_EMAIL_EXPIRATION_MINUTES | Number |
-| SMTP_HOST | String |
-| SMTP_PORT | Number |
-| SMTP_USERNAME | String |
-| SMTP_PASSWORD | String |
-| EMAIL_FROM | String |
-| TREBLLE_API_KEY | String |
-| TREBLLE_PROJECT_ID | String |
+| Variable | Data Type | Allowed Values  |
+| ----------- | ----------- | ----------- |
+| PORT | Number | Default: 3000 |
+| BASE_URL | String | the url for hosting the API |
+| NODE_ENV | String | production&nbsp;\|&nbsp; development |
+| DB_URL | String | mongo url |
+| thumbnails_path | String | file directory path |
+| movies_path | String | file directory path |
+| JWT_SECRET | String | any |
+| JWT_ACCESS_EXPIRATION_MINUTES | Number | any |
+| JWT_REFRESH_EXPIRATION_DAYS | Number | any |
+| JWT_RESET_PASSWORD_EXPIRATION_MINUTES | Number | any |
+| JWT_VERIFY_EMAIL_EXPIRATION_MINUTES | Number | any |
+| SMTP_HOST | String | eg: smtp.gmail.com |
+| SMTP_PORT | Number | 465 |
+| SMTP_USERNAME | String | any |
+| SMTP_PASSWORD | String | any |
+| EMAIL_FROM | String | any |
+| TREBLLE_API_KEY | String | any |
+| TREBLLE_PROJECT_ID | String | any |
 
 > These variables are required and the API cannot start without them! :joy:
 
@@ -54,7 +48,7 @@ after the dependencies are installed, type `npm start` and visit the version 1.0
 
 | endpoint | method | request payload |
 | --- | --- | --- |
-| --- | --- | <pre><code></code>{<br>&nbsp;<span style="color: green;">"mumu"</span><span>: </span><span style="color: green;">"mumu", </span><span> :</span><span style="color: red;">required</span><br>}</code></pre> |
+| --- | --- | <pre><code></code>{<br>&nbsp;&nbsp;<span style="color: green;">"mumu"</span><span>: </span><span style="color: green;">"mumu", </span><span> :</span><span style="color: red;">required</span><br>}</code></pre> |
 
 
 ### Security Checks
@@ -65,8 +59,15 @@ after the dependencies are installed, type `npm start` and visit the version 1.0
 
 ### Team
 
-![smartbizlord](https://github.com/) [Oladimeji Amusa](https://github.com/smartbizlord)
-![blessme247](https://github.com/) [Abraham Solabi](https://github.com/blessme247)
+![smartbizlord](https://avatars.githubusercontent.com/u/103539335?v=4) 
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Oladimeji Amusa](https://github.com/smartbizlord)
+
+![blessme247](https://avatars.githubusercontent.com/u/67491400?v=4)
+
+
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Abraham Solabi](https://github.com/blessme247)
 
 ### Enquiries
 
