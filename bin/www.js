@@ -63,7 +63,7 @@ const onListening = () => {
   }
   
 const unexpectedErrorHandler = (error) => {
-    logger.error(error);
+    console.error(error);
     exitHandler();
 };
  
