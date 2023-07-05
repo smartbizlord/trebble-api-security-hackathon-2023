@@ -19,7 +19,10 @@ const moviesWithoutAuth = async (limit, page) => {
         })
         .skip(page * limit || 0)
         .limit(limit || 5)
-        const count = limit || 5
+        let count = limit || 5
+        if (movies.length < count) {
+            count = movies.length
+        }
         page = page || 0
         const totalPage = usersCount / count
         return {movies, total: usersCount, page, count, totalPage};
@@ -34,7 +37,10 @@ const getGenres = async (limit, page) => {
     })
     .skip(page * limit || 0)
     .limit(limit || 5)
-    const count = limit || 5
+    let count = limit || 5
+    if (genres.length < count) {
+            count = movies.length
+        }
     page = page || 0
     const totalPage = usersCount / count
     return {genres, total: usersCount, page, count, totalPage};
@@ -49,7 +55,10 @@ const getCountries = async (limit, page) => {
     })
     .skip(page * limit || 0)
     .limit(limit || 5)
-    const count = limit || 5
+    let count = limit || 5
+    if (countries.length < count) {
+            count = movies.length
+        }
     page = page || 0
     const totalPage = usersCount / count
     return {countries, total: usersCount, page, count, totalPage};

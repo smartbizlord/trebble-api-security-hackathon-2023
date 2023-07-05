@@ -42,7 +42,8 @@ const Schema = mongoose.Schema
       required: true,
     },
     movieCountry : {
-      type: String,
+      type: mongoose.ObjectId,
+      ref: 'Genre',
       required: true,
     },
     movieDirector : {
@@ -65,7 +66,8 @@ const Schema = mongoose.Schema
     },
     genreId: {
       type: mongoose.ObjectId,
-      ref: 'Genre'
+      ref: 'Genre',
+      required: true,
     }
   }, { timestamps: true });
 
