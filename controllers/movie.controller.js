@@ -77,7 +77,9 @@ const updateGenres = catchAsync(async (req, res) => {
 });
 
 const getCountries = catchAsync(async (req, res) => {
-    const countries = await movieService.getCountries();
+    const page = pick(req.query, ['page']);
+    const limit = pick(req.query, ['limit']);
+    const countries = await movieService.getCountries(limit.limit, page.page);
     res.status(httpStatus.OK).send(countries)
 });
 
