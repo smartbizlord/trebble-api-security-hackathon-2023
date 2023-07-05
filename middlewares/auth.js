@@ -3,7 +3,7 @@ const ApiError = require('../utils/ApiError');
 const { roleRights } = require('../config/roles');
 
 const verifyCallback = (req, resolve, reject, requiredRights) => {
-  user = req.user;
+  const user = req.user;
 
   if (requiredRights.length) {
     const userRights = roleRights.get(user.userRole);

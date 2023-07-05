@@ -9,6 +9,8 @@ const fs = require('fs');
 const auth = require('../config/auth');
 
 const moviesWithoutAuth = async (limit, page) => {
+        page = page || 0
+        let count = limit || 5
         const moviesCount = await dB.movies.estimatedDocumentCount({
             isActive: true,
             special: false,
@@ -19,16 +21,16 @@ const moviesWithoutAuth = async (limit, page) => {
         })
         .skip(page * limit || 0)
         .limit(limit || 5)
-        let count = limit || 5
         if (movies.length < count) {
             count = movies.length
         }
-        page = page || 0
         const totalPages = (moviesCount / count) || 0
         return {movies, total: moviesCount, page, count, totalPages};
 };
 
 const getGenres = async (limit, page) => {
+    page = page || 0
+    let count = limit || 5
     const genresCount = await dB.genres.estimatedDocumentCount({
         isActive: true,
     })
@@ -37,16 +39,16 @@ const getGenres = async (limit, page) => {
     })
     .skip(page * limit || 0)
     .limit(limit || 5)
-    let count = limit || 5
     if (genres.length < count) {
-            count = movies.length
+            count = genres.length
         }
-    page = page || 0
     const totalPages = (genresCount / count) || 0
     return {genres, total: genresCount, page, count, totalPages};
 };
 
 const getCountries = async (limit, page) => {
+    page = page || 0
+    let count = limit || 5
     const countriesCount = await dB.countries.estimatedDocumentCount({
         isActive: true,
     })
@@ -55,11 +57,9 @@ const getCountries = async (limit, page) => {
     })
     .skip(page * limit || 0)
     .limit(limit || 5)
-    let count = limit || 5
     if (countries.length < count) {
-            count = movies.length
+            count = countries.length
         }
-    page = page || 0
     const totalPages = (countriesCount / count) || 0
     return {countries, total: countriesCount, page, count, totalPages};
 };
