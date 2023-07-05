@@ -1,6 +1,6 @@
 const allRoles = {
     user: ['getMovies', 'searchMovies', 'getGenres', 'getCountries',],
-    admin: ['getUsers', 'manageUsers', 'getUser', 'getMovies', 'searchMovies', 'editMovies', 'getGenres', 'getCountries', 'downloadMovies', 'editGenres', 'uploadMovies', 'streamMovies', 'createGenres', 'createCountry', 'deleteMovies', 'deleteGenres', 'deleteCountries', ],
+    admin: ['getUsersAdmin', 'manageUsersAdmin', 'getUserAdmin', 'getMoviesAdmin', 'searchMoviesAdmin', 'editMoviesAdmin', 'getGenresAdmin', 'getCountriesAdmin', 'downloadMoviesAdmin', 'editGenresAdmin', 'uploadMoviesAdmin', 'streamMoviesAdmin', 'createGenresAdmin', 'createCountryAdmin', 'deleteMoviesAdmin', 'deleteGenresAdmin', 'deleteCountriesAdmin', ],
   };
 
   const roles = Object.keys(allRoles);
