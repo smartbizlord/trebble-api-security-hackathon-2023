@@ -17,7 +17,7 @@ mongooseInstance
   logger.info('Database is good');
 })
 .catch(err => {
-  logger.error('Database no dey work', err);
+  logger.error('Database connection error', err);
 })
 
 dB.mongo = mongooseInstance
