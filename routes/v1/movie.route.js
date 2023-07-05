@@ -21,27 +21,27 @@ if (config.env == 'production') {
 
 
 router.route('/')
-    .get(allowedMethod, auth(), validate(movieValidation.getWithPagination), movieController.getMovies)
+    .get(allowedMethod, auth("getMovies"), validate(movieValidation.getWithPagination), movieController.getMovies)
     .all(unAllowedMethod)
 
 router.route('/genres')
-    .get(allowedMethod, auth(), validate(movieValidation.getWithPagination), movieController.getGenres)
+    .get(allowedMethod, auth("getGenres"), validate(movieValidation.getWithPagination), movieController.getGenres)
     .all(unAllowedMethod)
 
 router.route('/countries')
-    .get(allowedMethod, auth(), validate(movieValidation.getWithPagination), movieController.getCountries)
+    .get(allowedMethod, auth("getCountries"), validate(movieValidation.getWithPagination), movieController.getCountries)
     .all(unAllowedMethod)
 
 router.route('/:id')
-    .get(cache.route(1800), allowedMethod, auth(), validate(movieValidation.getById), movieController.getMoviesById)
+    .get(cache.route(1800), allowedMethod, auth("getMovies"), validate(movieValidation.getById), movieController.getMoviesById)
     .all(unAllowedMethod)
 
 router.route('/genres/:id')
-    .get(cache.route(1800), allowedMethod, auth(), validate(movieValidation.getById), movieController.getGenresById)
+    .get(cache.route(1800), allowedMethod, auth("getGenres"), validate(movieValidation.getById), movieController.getGenresById)
     .all(unAllowedMethod)
 
 router.route('/countries/:id')
-    .get(cache.route(1800), allowedMethod, auth(), validate(movieValidation.getById), movieController.getCountriesById)
+    .get(cache.route(1800), allowedMethod, auth("getCountries"), validate(movieValidation.getById), movieController.getCountriesById)
     .all(unAllowedMethod)
 
 
