@@ -1,6 +1,7 @@
 const httpStatus = require('http-status');
 const catchAsync = require('../utils/catchAsync');
 const { movieService } = require('../services');
+const pick = require('../utils/pick');
 
 const uploadMovies = catchAsync(async (req, res) => {
     
@@ -55,17 +56,23 @@ const deleteCountry = catchAsync(async (req, res) => {
 })
 
 const getMovies = catchAsync(async (req, res) => {
-    const movies = await movieService.moviesWithoutAuth();
+    const page = pick(req.query, ['page']);
+    const limit = pick(req.query, ['limit']);
+    const movies = await movieService.moviesWithoutAuth(limit.limit, page.page);
     res.status(httpStatus.OK).send(movies)
 });
 
 const getGenres = catchAsync(async (req, res) => {
-    const genres = await movieService.getGenres();
+    const page = pick(req.query, ['page']);
+    const limit = pick(req.query, ['limit']);
+    const genres = await movieService.getGenres(limit.limit, page.page);
     res.status(httpStatus.OK).send(genres)
 });
 
 const updateGenres = catchAsync(async (req, res) => {
-    const genres = await movieService.getGenres();
+    const page = pick(req.query, ['page']);
+    const limit = pick(req.query, ['limit']);
+    const genres = await movieService.getGenres(limit.limit, page.page);
     res.status(httpStatus.OK).send(genres)
 });
 
@@ -77,18 +84,27 @@ const getCountries = catchAsync(async (req, res) => {
 const getMoviesById = catchAsync(async (req, res) => {
     const id = req.params.id;
     const movies = await movieService.moviesWithoutAuthById(id);
+    if(!movies) {
+        res.status(httpStatus.NOT_FOUND).send({message: "Couldn't find the resource"})
+    }
     res.status(httpStatus.OK).send(movies)
 });
 
 const getGenresById = catchAsync(async (req, res) => {
     const id = req.params.id;
     const genres = await movieService.getGenresById(id);
+    if(!genres) {
+        res.status(httpStatus.NOT_FOUND).send({message: "Couldn't find the resource"})
+    }
     res.status(httpStatus.OK).send(genres)
 });
 
 const getCountriesById = catchAsync(async (req, res) => {
     const id = req.params.id;
     const countries = await movieService.getCountriesById(id);
+    if(!countries) {
+        res.status(httpStatus.NOT_FOUND).send({message: "Couldn't find the resource"})
+    }
     res.status(httpStatus.OK).send(countries)
 });
 

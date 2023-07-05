@@ -8,26 +8,51 @@ const { tokenTypes } = require('../config/tokens');
 const fs = require('fs');
 const auth = require('../config/auth');
 
-const moviesWithoutAuth = async () => {
-        const movies = await dB.movies.findAll({
+const moviesWithoutAuth = async (limit, page) => {
+        const usersCount = await dB.countries.estimatedDocumentCount({
             isActive: true,
             special: false,
         })
-        return movies;
+        const movies = await dB.movies.find({
+            isActive: true,
+            special: false,
+        })
+        .skip(page * limit || 0)
+        .limit(limit || 5)
+        const count = limit || 5
+        page = page || 0
+        const totalPage = usersCount / count
+        return {movies, total: usersCount, page, count, totalPage};
 };
 
-const getGenres = async () => {
-    const genres = await dB.genres.findAll({
+const getGenres = async (limit, page) => {
+    const usersCount = await dB.countries.estimatedDocumentCount({
         isActive: true,
     })
-    return genres;
+    const genres = await dB.genres.find({
+        isActive: true,
+    })
+    .skip(page * limit || 0)
+    .limit(limit || 5)
+    const count = limit || 5
+    page = page || 0
+    const totalPage = usersCount / count
+    return {genres, total: usersCount, page, count, totalPage};
 };
 
-const getCountries = async () => {
-    const countries = await dB.countries.findAll({
+const getCountries = async (limit, page) => {
+    const usersCount = await dB.countries.estimatedDocumentCount({
         isActive: true,
     })
-    return countries;
+    const countries = await dB.countries.find({
+        isActive: true,
+    })
+    .skip(page * limit || 0)
+    .limit(limit || 5)
+    const count = limit || 5
+    page = page || 0
+    const totalPage = usersCount / count
+    return {countries, total: usersCount, page, count, totalPage};
 };
 
 const updateMovie = async (_id, body) => {
@@ -54,6 +79,7 @@ const moviesWithoutAuthById = async (_id) => {
     const movies = await dB.movies.findOne({
         _id
     })
+    console.log(movies)
     return movies;
 };
 

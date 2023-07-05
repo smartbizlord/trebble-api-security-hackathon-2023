@@ -49,48 +49,57 @@ after the dependencies are installed, type `npm start` and visit the version 1.0
 | endpoint | method | request payload |
 | --- | --- | --- |
 | Auth | Auth | Auth |
-| /v1.0/auth/register | POST | --- |
-| /v1.0/auth/login | POST | --- |
-| /v1.0/auth/logout | POST | --- |
-| /v1.0/auth/refresh-tokens | POST | --- |
-| /v1.0/auth/forgot-password | POST | --- |
-| /v1.0/auth/reset-password | POST | --- |
-| /v1.0/auth/send-verification-email | POST | --- |
-| /v1.0/auth/verify-email | POST | --- |
-| --- | --- | <pre><code></code>{<br>&nbsp;&nbsp;<span style="color: green;">"mumu"</span><span>: </span><span style="color: green;">"mumu", </span><span> :</span><span style="color: red;">required</span><br>}</code></pre> |
+| /v1.0/auth/register | POST | <pre>`Request Body`<br><br>{<br>&nbsp;&nbsp;<span style="color: green;">"email", </span><span> :</span><span style="color: red;">required</span><br>&nbsp;&nbsp;<span style="color: green;">"password", </span><span> :</span><span style="color: red;">required</span><br>&nbsp;&nbsp;<span style="color: green;">"firstName", </span><span> :</span><span style="color: red;">required</span><br>&nbsp;&nbsp;<span style="color: green;">"lastName", </span><span> :</span><span style="color: red;">required</span><br>&nbsp;&nbsp;<span style="color: green;">"gender", </span><span> :</span><span style="color: red;">required</span><br>}</pre> |
+| /v1.0/auth/login | POST | <pre>`Request Body`<br><br>{<br>&nbsp;&nbsp;<span style="color: green;">"email", </span><span> :</span><span style="color: red;">required</span><br>&nbsp;&nbsp;<span style="color: green;">"password", </span><span> :</span><span style="color: red;">required</span><br>}</pre> |
+| /v1.0/auth/logout | POST | <pre>`Request Body`<br><br>{<br>&nbsp;&nbsp;<span style="color: green;">"refreshToken", </span><span> :</span><span style="color: red;">required</span><br>}</pre> |
+| /v1.0/auth/refresh-tokens | POST | <pre>`Request Body`<br><br>{<br>&nbsp;&nbsp;<span style="color: green;">"refreshToken", </span><span> :</span><span style="color: red;">required</span><br>}</pre> |
+| /v1.0/auth/forgot-password | POST | <pre>`Request Body`<br><br>{<br>&nbsp;&nbsp;<span style="color: green;">"email", </span><span> :</span><span style="color: red;">required</span><br>}</pre> |
+| /v1.0/auth/reset-password | POST | <pre>`Request Body`<br><br>{<br>&nbsp;&nbsp;<span style="color: green;">"password", </span><span> :</span><span style="color: red;">required</span><br>}<br><br>`Request Query`<br><br>{<br>&nbsp;&nbsp;<span style="color: green;">"token", </span><span> :</span><span style="color: red;">required</span><br>}</pre> |
+| /v1.0/auth/send-verification-email | POST | <pre>`Request Query`<br><br>{<br>&nbsp;&nbsp;<span style="color: green;">"token", </span><span> :</span><span style="color: red;">required</span><br>}</pre> |
+| /v1.0/auth/verify-email | POST | <pre>`Request Query`<br><br>{<br>&nbsp;&nbsp;<span style="color: green;">"token", </span><span> :</span><span style="color: red;">required</span><br>}</pre> |
 | Movies | Movies | Movies |
-| /v1.0/movies/ | GET | --- |
-| /v1.0/movies/genres | GET | --- |
-| /v1.0/movies/countries | GET | --- |
-| /v1.0/movies/:id | GET | --- |
-| /v1.0/movies/genres/:id | GET | --- |
-| /v1.0/movies/countries/:id | GET | --- |
+| /v1.0/movies/ | GET | <pre>`Request Query`<br><br>{<br>&nbsp;&nbsp;<span style="color: green;">"page", </span><span> :</span><span style="color: red;">required</span><br>&nbsp;&nbsp;<span style="color: green;">"limit", </span><span> :</span><span style="color: red;">required</span><br>}</pre> |
+| /v1.0/movies/genres | GET | <pre>`Request Query`<br><br>{<br>&nbsp;&nbsp;<span style="color: green;">"page", </span><span> :</span><span style="color: red;">required</span><br>&nbsp;&nbsp;<span style="color: green;">"limit", </span><span> :</span><span style="color: red;">required</span><br>}</pre> |
+| /v1.0/movies/countries | GET | <pre>`Request Query`<br><br>{<br>&nbsp;&nbsp;<span style="color: green;">"page", </span><span> :</span><span style="color: red;">required</span><br>&nbsp;&nbsp;<span style="color: green;">"limit", </span><span> :</span><span style="color: red;">required</span><br>}</pre> |
+| /v1.0/movies/:id | GET | <pre>`Request Query`<br><br>{<br>&nbsp;&nbsp;<span style="color: green;">"page", </span><span> :</span><span style="color: red;">required</span><br>&nbsp;&nbsp;<span style="color: green;">"limit", </span><span> :</span><span style="color: red;">required</span><br>}</pre> |
+| /v1.0/movies/genres/:id | GET | <pre>`Request Query`<br><br>{<br>&nbsp;&nbsp;<span style="color: green;">"page", </span><span> :</span><span style="color: red;">required</span><br>&nbsp;&nbsp;<span style="color: green;">"limit", </span><span> :</span><span style="color: red;">required</span><br>}</pre> |
+| /v1.0/movies/countries/:id | GET | <pre>`Request Query`<br><br>{<br>&nbsp;&nbsp;<span style="color: green;">"page</span><span> :</span><span style="color: red;">required</span><br>&nbsp;&nbsp;<span style="color: green;">"limit", </span><span> :</span><span style="color: red;">required</span><br>}</pre> |
 | Admins | Admins | Admins |
-| /v1.0/admins/movies | GET | --- |
-| /v1.0/admins/movies | POST | --- |
-| /v1.0/admins/genres | GET | --- |
-| /v1.0/admins/genres | POST | --- |
-| /v1.0/admins/countries | GET | --- |
-| /v1.0/admins/countries | POST | --- |
-| /v1.0/admins/users | GET | --- |
-| /v1.0/admins/users | POST | --- |
-| /v1.0/admins/movies/:id | GET | --- |
-| /v1.0/admins/movies/:id | PATCH | --- |
-| /v1.0/admins/movies/:id | DELETE | --- |
-| /v1.0/admins/genres/:id | GET | --- |
-| /v1.0/admins/genres/:id | DELETE | --- |
-| /v1.0/admins/countries/:id | GET | --- |
-| /v1.0/admins/countries/:id | DELETE | --- |
-| /v1.0/admins/users/:id | GET | --- |
-| /v1.0/admins/users/:id | PATCH | --- |
-| /v1.0/admins/users/:id | DELETE | --- |
+| /v1.0/admins/movies | GET | <pre>`Request Query`<br><br>{<br>&nbsp;&nbsp;<span style="color: green;">"page</span><span> :</span><span style="color: red;">required</span><br>&nbsp;&nbsp;<span style="color: green;">"limit", </span><span> :</span><span style="color: red;">required</span><br>}</pre> |
+| /v1.0/admins/movies | POST | <pre>`Request Body`<br><br>{<br>&nbsp;&nbsp;<span style="color: green;">"movieTitle</span><span> :</span><span style="color: red;">required</span><br>&nbsp;&nbsp;<span style="color: green;">"movieDescription", </span><span> :</span><span style="color: red;">required</span><br>&nbsp;&nbsp;<span style="color: green;">"movieThumbnail</span><span> :</span><span style="color: red;">required</span><br>&nbsp;&nbsp;<span style="color: green;">"releaseYear</span><span> :</span><span style="color: red;">required</span><br>&nbsp;&nbsp;<span style="color: green;">"movieCast</span><span> :</span><span style="color: red;">required</span><br>&nbsp;&nbsp;<span style="color: green;">"countryId</span><span> :</span><span style="color: red;">required</span><br>&nbsp;&nbsp;<span style="color: green;">"movieDirector</span><span> :</span><span style="color: red;">required</span><br>&nbsp;&nbsp;<span style="color: green;">"movieDuration</span><span> :</span><span style="color: red;">required</span><br>&nbsp;&nbsp;<span style="color: green;">"isActive</span><span> :</span><span style="color: red;">required</span><br>&nbsp;&nbsp;<span style="color: green;">"special</span><span> :</span><span style="color: red;">required</span><br>&nbsp;&nbsp;<span style="color: green;">"genreId</span><span> :</span><span style="color: red;">required</span><br>}</pre> |
+| /v1.0/admins/genres | GET | <pre>`Request Query`<br><br>{<br>&nbsp;&nbsp;<span style="color: green;">"page</span><span> :</span><span style="color: red;">required</span><br>&nbsp;&nbsp;<span style="color: green;">"limit", </span><span> :</span><span style="color: red;">required</span><br>}</pre> |
+| /v1.0/admins/genres | POST | <pre>`Request Body`<br><br>{<br>&nbsp;&nbsp;<span style="color: green;">"genreName</span><span> :</span><span style="color: red;">required</span><br>}</pre> |
+| /v1.0/admins/countries | GET | <pre>`Request Query`<br><br>{<br>&nbsp;&nbsp;<span style="color: green;">"page</span><span> :</span><span style="color: red;">required</span><br>&nbsp;&nbsp;<span style="color: green;">"limit", </span><span> :</span><span style="color: red;">required</span><br>}</pre> |
+| /v1.0/admins/countries | POST | <pre>`Request Body`<br><br>{<br>&nbsp;&nbsp;<span style="color: green;">"countryName</span><span> :</span><span style="color: red;">required</span><br>}</pre> |
+| /v1.0/admins/users | GET | <pre>`Request Query`<br><br>{<br>&nbsp;&nbsp;<span style="color: green;">"page</span><span> :</span><span style="color: red;">required</span><br>&nbsp;&nbsp;<span style="color: green;">"limit", </span><span> :</span><span style="color: red;">required</span><br>}</pre> |
+| /v1.0/admins/users | POST | <pre>`Request Body`<br><br>{<br>&nbsp;&nbsp;<span style="color: green;">"email", </span><span> :</span><span style="color: red;">required</span><br>&nbsp;&nbsp;<span style="color: green;">"password", </span><span> :</span><span style="color: red;">required</span><br>&nbsp;&nbsp;<span style="color: green;">"firstName", </span><span> :</span><span style="color: red;">required</span><br>&nbsp;&nbsp;<span style="color: green;">"lastName", </span><span> :</span><span style="color: red;">required</span><br>&nbsp;&nbsp;<span style="color: green;">"gender", </span><span> :</span><span style="color: red;">required</span><br>}</pre> |
+| /v1.0/admins/movies/:id | GET | <pre>`Request Query`<br><br>{}<br><br>`Request Query`<br><br>{}</pre> |
+| /v1.0/admins/movies/:id | PATCH | <pre>`Request Body`<br><br>{<br>&nbsp;&nbsp;<span style="color: green;">"movieTitle</span><span> :</span><span style="color: red;">optional</span><br>&nbsp;&nbsp;<span style="color: green;">"movieDescription", </span><span> :</span><span style="color: red;">optional</span><br>&nbsp;&nbsp;<span style="color: green;">"movieThumbnail</span><span> :</span><span style="color: red;">optional</span><br>&nbsp;&nbsp;<span style="color: green;">"releaseYear</span><span> :</span><span style="color: red;">optional</span><br>&nbsp;&nbsp;<span style="color: green;">"movieCast</span><span> :</span><span style="color: red;">optional</span><br>&nbsp;&nbsp;<span style="color: green;">"countryId</span><span> :</span><span style="color: red;">optional</span><br>&nbsp;&nbsp;<span style="color: green;">"movieDirector</span><span> :</span><span style="color: red;">optional</span><br>&nbsp;&nbsp;<span style="color: green;">"movieDuration</span><span> :</span><span style="color: red;">optional</span><br>&nbsp;&nbsp;<span style="color: green;">"isActive</span><span> :</span><span style="color: red;">optional</span><br>&nbsp;&nbsp;<span style="color: green;">"special</span><span> :</span><span style="color: red;">optional</span><br>&nbsp;&nbsp;<span style="color: green;">"genreId</span><span> :</span><span style="color: red;">optional</span><br>}</pre> |
+| /v1.0/admins/movies/:id | DELETE | <pre>`Request Query`<br><br>{}<br><br>`Request Query`<br><br>{}</pre> |
+| /v1.0/admins/genres/:id | GET | <pre>`Request Query`<br><br>{}<br><br>`Request Query`<br><br>{}</pre> |
+| /v1.0/admins/genres/:id | DELETE | <pre>`Request Query`<br><br>{}<br><br>`Request Query`<br><br>{}</pre> |
+| /v1.0/admins/countries/:id | GET | <pre>`Request Query`<br><br>{}<br><br>`Request Query`<br><br>{}</pre> |
+| /v1.0/admins/countries/:id | DELETE | <pre>`Request Query`<br><br>{}<br><br>`Request Query`<br><br>{}</pre> |
+| /v1.0/admins/users/:id | GET | <pre>`Request Query`<br><br>{}<br><br>`Request Query`<br><br>{}</pre> |
+| /v1.0/admins/users/:id | PATCH | <pre>`Request Body`<br><br>{<br>&nbsp;&nbsp;<span style="color: green;">"email", </span><span> :</span><span style="color: red;">required</span><br>&nbsp;&nbsp;<span style="color: green;">"firstName", </span><span> :</span><span style="color: red;">required</span><br>&nbsp;&nbsp;<span style="color: green;">"lastName", </span><span> :</span><span style="color: red;">required</span><br>&nbsp;&nbsp;<span style="color: green;">"gender", </span><span> :</span><span style="color: red;">required</span><br>}</pre> |
+| /v1.0/admins/users/:id | DELETE | <pre>`Request Query`<br><br>{}<br><br>`Request Query`<br><br>{}</pre> |
 
 
-### Security Checks
+### Security Hackathon Checklist
 
-- [x] Write the press release
-- [ ] Update the website
-- [ ] Contact the media
+- [x] SQL Injection
+- [x] Authentication
+- [x] Authorization
+- [x] UUID
+- [x] Rate Limiting
+- [x] Content Labeling
+- [x] MIME sniffing
+- [x] Force Secure Connection
+- [x] Embedding Prevention
+- [x] Security Policies
+- [x] Content-Type specification
+- [x] Method limiting
+- [x] Request Validation
 
 ### Team
 
