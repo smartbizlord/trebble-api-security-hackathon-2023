@@ -18,7 +18,7 @@ verifyToken = async(req,res,next) => {
             return next(new ApiError(httpStatus.UNAUTHORIZED, 'Please authenticate'));
         }
         staticy = decoded.sub;
-        req.user = await dB.users.findOne( { id : staticy } );
+        req.user = await dB.users.findOne( { _id : staticy } );
         if(req.user) {
             next();
         } else {
