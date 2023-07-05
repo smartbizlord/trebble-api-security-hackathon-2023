@@ -9,7 +9,7 @@ const fs = require('fs');
 const auth = require('../config/auth');
 
 const moviesWithoutAuth = async (limit, page) => {
-        const usersCount = await dB.movies.estimatedDocumentCount({
+        const moviesCount = await dB.movies.estimatedDocumentCount({
             isActive: true,
             special: false,
         })
@@ -24,12 +24,12 @@ const moviesWithoutAuth = async (limit, page) => {
             count = movies.length
         }
         page = page || 0
-        const totalPage = (usersCount / count) || 0
-        return {movies, total: usersCount, page, count, totalPage};
+        const totalPages = (moviesCount / count) || 0
+        return {movies, total: moviesCount, page, count, totalPages};
 };
 
 const getGenres = async (limit, page) => {
-    const usersCount = await dB.genres.estimatedDocumentCount({
+    const genresCount = await dB.genres.estimatedDocumentCount({
         isActive: true,
     })
     const genres = await dB.genres.find({
@@ -42,12 +42,12 @@ const getGenres = async (limit, page) => {
             count = movies.length
         }
     page = page || 0
-    const totalPage = (usersCount / count) || 0
-    return {genres, total: usersCount, page, count, totalPage};
+    const totalPages = (genresCount / count) || 0
+    return {genres, total: genresCount, page, count, totalPages};
 };
 
 const getCountries = async (limit, page) => {
-    const usersCount = await dB.countries.estimatedDocumentCount({
+    const countriesCount = await dB.countries.estimatedDocumentCount({
         isActive: true,
     })
     const countries = await dB.countries.find({
@@ -60,8 +60,8 @@ const getCountries = async (limit, page) => {
             count = movies.length
         }
     page = page || 0
-    const totalPage = (usersCount / count) || 0
-    return {countries, total: usersCount, page, count, totalPage};
+    const totalPages = (countriesCount / count) || 0
+    return {countries, total: countriesCount, page, count, totalPages};
 };
 
 const updateMovie = async (_id, body) => {
