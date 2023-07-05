@@ -32,7 +32,7 @@ const logout = async (refreshToken) => {
   if (!refreshTokenDoc) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Not found');
   }
-  await refreshTokenDoc.destroy();
+  await refreshTokenDoc.delete();
 };
 
 /**
@@ -47,8 +47,8 @@ const refreshAuth = async (refreshToken) => {
     if (!user) {
       throw new Error();
     }
-    await refreshTokenDoc.destroy();
-    return tokenService.generateAuthTokens(user.id);
+    await refreshTokenDoc.delete();
+    return tokenService.generateAuthTokens(user._id);
   } catch (error) {
     throw new ApiError(httpStatus.UNAUTHORIZED, 'Please authenticate');
   }
@@ -67,8 +67,8 @@ const resetPassword = async (resetPasswordToken, newPassword) => {
     if (!user) {
       throw new Error();
     }
-    await userService.updateUserById(user.id, { password: newPassword });
-    await dB.tokens.destroy( { user: user.id, type: tokenTypes.RESET_PASSWORD } );
+    await userService.updateUserById(user._id, { password: newPassword });
+    await dB.tokens.delete( { user: user._id, type: tokenTypes.RESET_PASSWORD } );
   } catch (error) {
     throw new ApiError(httpStatus.UNAUTHORIZED, error);
   }
@@ -86,8 +86,8 @@ const verifyEmail = async (verifyEmailToken) => {
     if (!user) {
       throw new Error();
     }
-    await dB.tokens.destroy( { user: user.id, type: tokenTypes.VERIFY_EMAIL } );
-    await userService.updateUserById(user.id, { isEmailVerified: true });
+    await dB.tokens.delete( { user: user._id, type: tokenTypes.VERIFY_EMAIL } );
+    await userService.updateUserById(user._id, { isEmailVerified: true });
   } catch (error) {
     throw new ApiError(httpStatus.UNAUTHORIZED, 'Email verification failed');
   }
@@ -105,7 +105,7 @@ const verifyEmailApp = async (verifyEmailToken, id) => {
     if (!user) {
       throw new Error();
     }
-    await dB.tokens.destroy( { user: id, type: tokenTypes.VERIFY_EMAIL } );
+    await dB.tokens.delete( { user: id, type: tokenTypes.VERIFY_EMAIL } );
     await userService.updateUserById(id, { isEmailVerified: true });
   } catch (error) {
     throw new ApiError(httpStatus.UNAUTHORIZED, 'Email verification failed');
