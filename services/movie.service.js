@@ -8,7 +8,7 @@ const { tokenTypes } = require('../config/tokens');
 const fs = require('fs');
 const auth = require('../config/auth');
 
-const moviesWithoutAuth = async () => {
+const moviesWithoutAuth = async (limit, page) => {
         const usersCount = await dB.countries.estimatedDocumentCount({
             isActive: true,
             special: false,
@@ -25,7 +25,7 @@ const moviesWithoutAuth = async () => {
         return {movies, total: usersCount, page, count, totalPage};
 };
 
-const getGenres = async () => {
+const getGenres = async (limit, page) => {
     const usersCount = await dB.countries.estimatedDocumentCount({
         isActive: true,
     })
@@ -40,7 +40,7 @@ const getGenres = async () => {
     return {genres, total: usersCount, page, count, totalPage};
 };
 
-const getCountries = async () => {
+const getCountries = async (limit, page) => {
     const usersCount = await dB.countries.estimatedDocumentCount({
         isActive: true,
     })
@@ -79,6 +79,7 @@ const moviesWithoutAuthById = async (_id) => {
     const movies = await dB.movies.findOne({
         _id
     })
+    console.log(movies)
     return movies;
 };
 

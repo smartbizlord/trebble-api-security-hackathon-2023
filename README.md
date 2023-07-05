@@ -85,11 +85,21 @@ after the dependencies are installed, type `npm start` and visit the version 1.0
 | /v1.0/admins/users/:id | DELETE | <pre>`Request Query`<br><br>{}<br><br>`Request Query`<br><br>{}</pre> |
 
 
-### Security Checks
+### Security Hackathon Checklist
 
-- [x] Write the press release
-- [ ] Update the website
-- [ ] Contact the media
+- [x] SQL Injection
+- [x] Authentication
+- [x] Authorization
+- [x] UUID
+- [x] Rate Limiting
+- [x] Content Labeling
+- [x] MIME sniffing
+- [x] Force Secure Connection
+- [x] Embedding Prevention
+- [x] Security Policies
+- [x] Content-Type specification
+- [x] Method limiting
+- [x] Request Validation
 
 ### Team
 

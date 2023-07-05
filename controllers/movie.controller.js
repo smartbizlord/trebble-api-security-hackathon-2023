@@ -1,6 +1,7 @@
 const httpStatus = require('http-status');
 const catchAsync = require('../utils/catchAsync');
 const { movieService } = require('../services');
+const pick = require('../utils/pick');
 
 const uploadMovies = catchAsync(async (req, res) => {
     
