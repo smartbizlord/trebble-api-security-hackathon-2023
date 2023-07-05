@@ -20,6 +20,8 @@ mongooseInstance
   logger.error('Database no dey work', err);
 })
 
+dB.mongo = mongooseInstance
+
 dB.countries = mongoose.model('Country', country)
 dB.genres = mongoose.model('Genre', genre)
 dB.movies = mongoose.model('Movie', movie)
