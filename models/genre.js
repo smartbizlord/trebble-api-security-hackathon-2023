@@ -8,11 +8,6 @@ const Schema = mongoose.Schema
       required: true,
       trim: true,
     },
-    genreUId : {
-      type: String,
-      required: true,
-      minLength : 8,
-    },
     isActive: {
       type: Boolean,
     },

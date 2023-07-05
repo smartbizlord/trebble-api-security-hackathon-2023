@@ -1,7 +1,8 @@
 const debug = require('debug')('movie_smart:server');
-const express = require('express');
-const app = express();
+const app = require('../app');
 const http = require('http');
+const config = require('../config/auth');
+const logger = require('../config/logger');
 
 
 const normalizePort = (val) => {
@@ -42,11 +43,11 @@ const onError = (error) => {
     // handle specific listen errors with friendly messages
     switch (error.code) {
       case 'EACCES':
-        console.error(bind + ' requires elevated privileges');
+        logger.error(bind + ' requires elevated privileges');
         process.exit(1);
         break;
       case 'EADDRINUSE':
-        console.error(bind + ' is already in use');
+        logger.error(bind + ' is already in use');
         process.exit(1);
         break;
       default:
@@ -63,7 +64,7 @@ const onListening = () => {
   }
   
 const unexpectedErrorHandler = (error) => {
-    console.error(error);
+    logger.error(error);
     exitHandler();
 };
  
@@ -76,13 +77,13 @@ process.on('SIGTERM', () => {
     }
   });
 
-const port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(config.port || '3000');
 app.set('port', port);
 
 var server = http.createServer(app);
 
 server.listen(port, () => {
-    console.info(`Listening to port ${port}`);
+    logger.info(`Listening to port ${port}`);
 });
 
 server.on('error', onError);

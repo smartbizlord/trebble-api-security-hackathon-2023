@@ -48,7 +48,42 @@ after the dependencies are installed, type `npm start` and visit the version 1.0
 
 | endpoint | method | request payload |
 | --- | --- | --- |
+| Auth | Auth | Auth |
+| /v1.0/auth/register | POST | --- |
+| /v1.0/auth/login | POST | --- |
+| /v1.0/auth/logout | POST | --- |
+| /v1.0/auth/refresh-tokens | POST | --- |
+| /v1.0/auth/forgot-password | POST | --- |
+| /v1.0/auth/reset-password | POST | --- |
+| /v1.0/auth/send-verification-email | POST | --- |
+| /v1.0/auth/verify-email | POST | --- |
 | --- | --- | <pre><code></code>{<br>&nbsp;&nbsp;<span style="color: green;">"mumu"</span><span>: </span><span style="color: green;">"mumu", </span><span> :</span><span style="color: red;">required</span><br>}</code></pre> |
+| Movies | Movies | Movies |
+| /v1.0/movies/ | GET | --- |
+| /v1.0/movies/genres | GET | --- |
+| /v1.0/movies/countries | GET | --- |
+| /v1.0/movies/:id | GET | --- |
+| /v1.0/movies/genres/:id | GET | --- |
+| /v1.0/movies/countries/:id | GET | --- |
+| Admins | Admins | Admins |
+| /v1.0/admins/movies | GET | --- |
+| /v1.0/admins/movies | POST | --- |
+| /v1.0/admins/genres | GET | --- |
+| /v1.0/admins/genres | POST | --- |
+| /v1.0/admins/countries | GET | --- |
+| /v1.0/admins/countries | POST | --- |
+| /v1.0/admins/users | GET | --- |
+| /v1.0/admins/users | POST | --- |
+| /v1.0/admins/movies/:id | GET | --- |
+| /v1.0/admins/movies/:id | PATCH | --- |
+| /v1.0/admins/movies/:id | DELETE | --- |
+| /v1.0/admins/genres/:id | GET | --- |
+| /v1.0/admins/genres/:id | DELETE | --- |
+| /v1.0/admins/countries/:id | GET | --- |
+| /v1.0/admins/countries/:id | DELETE | --- |
+| /v1.0/admins/users/:id | GET | --- |
+| /v1.0/admins/users/:id | PATCH | --- |
+| /v1.0/admins/users/:id | DELETE | --- |
 
 
 ### Security Checks
