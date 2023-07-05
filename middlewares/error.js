@@ -10,7 +10,7 @@ const errorConverter = (err, req, res, next) => {
     const statusCode =
       error.statusCode || error instanceof mongoose.Error ? httpStatus.BAD_REQUEST : httpStatus.INTERNAL_SERVER_ERROR;
     const message = error.message || httpStatus[statusCode];
-    if(message.indexOf("Cast to ObjectId failed for value") != -1) {
+    if(message.indexOf("ObjectId") != -1) {
       error = new ApiError(statusCode, "That is an invalid Id", false, err.stack);
     } else {
       error = new ApiError(statusCode, message, false, err.stack);
