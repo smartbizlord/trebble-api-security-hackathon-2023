@@ -10,7 +10,7 @@ const logger = require('../config/logger');
  * @returns {Promise<boolean>}
  */
 const isEmailTaken = async function (email) {
-  const user = await dB.users.findOne({ where: { email } });
+  const user = await dB.users.findOne( { email } );
   logger.info(user);
   return !!user;
 };
@@ -32,6 +32,7 @@ const isPasswordMatch = async function (password, user) {
  * @returns {Promise<User>}
  */
 const createUser = async (userBody) => {
+  console.log(userBody)
   if (await isEmailTaken(userBody.email)) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
   }
@@ -50,17 +51,30 @@ const createUser = async (userBody) => {
  * @returns {Promise<QueryResult>}
  */
 const queryUsers = async (limit, page, where) => {
-  const users = await dB.users.paginate(limit, page, where);
-  return users;
+  const usersCount = await dB.users.estimatedDocumentCount(where);
+  const users = await dB.users.find(where || {})
+    .skip(page * limit || 0)
+    .limit(limit || 5)
+    const count = limit || 5
+    page = page || 0
+    const totalPage = usersCount / count;
+  return {users, total: usersCount, page, count, totalPage};
 };
+
+const getUsers = async () => {
+  const users = await dB.users.find()
+    .skip(1)
+    .limit(3)
+  return users;
+}
 
 /**
  * Get user by id
  * @param {ObjectId} id
  * @returns {Promise<User>}
  */
-const getUserById = async (id) => {
-  return dB.users.findOne({ where: { id }});
+const getUserById = async (_id) => {
+  return dB.users.findOne( { _id });
 };
 
 /**
@@ -69,7 +83,7 @@ const getUserById = async (id) => {
  * @returns {Promise<User>}
  */
 const getUserByEmail = async (email) => {
-  return dB.users.findOne({ where: { email } });
+  return dB.users.findOne( { email } );
 };
 
 /**
@@ -78,19 +92,18 @@ const getUserByEmail = async (email) => {
  * @param {Object} updateBody
  * @returns {Promise<User>}
  */
-const updateUserById = async (userId, updateBody) => {
-  const user = await getUserById(userId);
-  if (!user) {
+const updateUserById = async (_id, updateBody) => {
+  const userById = await getUserById(_id);
+  if (!userById) {
     throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
   }
-  if (updateBody.email && (await isEmailTaken(updateBody.email, userId))) {
+  if (updateBody.email && (await isEmailTaken(updateBody.email, _id))) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
   }
   if (updateBody.password) { 
     updateBody.password = bcrypt.hashSync(updateBody.password, 8);
   }
-  await Object.assign(user, updateBody);
-  await user.save();
+  const user = await dB.users.findOneAndUpdate({_id}, updateBody, {new: true})
   return user;
 };
 
@@ -100,17 +113,17 @@ const updateUserById = async (userId, updateBody) => {
  * @returns {Promise<User>}
  */
 const deleteUserById = async (userId) => {
-  const user = await getUserById(userId);
+  const user = await dB.users.findByIdAndDelete(userId);
   if (!user) {
     throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
   }
-  await dB.users.destroy(user);
   return user;
 };
 
 module.exports = {
   createUser,
   queryUsers,
+  getUsers,
   getUserById,
   getUserByEmail,
   updateUserById,

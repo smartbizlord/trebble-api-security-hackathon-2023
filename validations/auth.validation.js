@@ -11,6 +11,19 @@ const register = {
   }),
 };
 
+const updateUser = {
+  body: Joi.object().keys({
+    email: Joi.string().email(),
+    firstName: Joi.string(),
+    lastName: Joi.string(),
+    gender: Joi.string().valid('Male', 'Female'),
+  }),
+};
+
+const deleteUser = {
+  body: Joi.object().keys({}),
+};
+
 const login = {
   body: Joi.object().keys({
     email: Joi.string().required(),
@@ -59,4 +72,6 @@ module.exports = {
   forgotPassword,
   resetPassword,
   verifyEmail,
+  updateUser,
+  deleteUser,
 };

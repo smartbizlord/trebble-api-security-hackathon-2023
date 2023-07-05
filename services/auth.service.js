@@ -28,7 +28,7 @@ const loginUserWithEmailAndPassword = async (email, password) => {
  * @returns {Promise}
  */
 const logout = async (refreshToken) => {
-  const refreshTokenDoc = await dB.tokens.findOne({ where: { token: refreshToken, type: tokenTypes.REFRESH, blacklisted: false } });
+  const refreshTokenDoc = await dB.tokens.findOne( { token: refreshToken, type: tokenTypes.REFRESH, blacklisted: false } );
   if (!refreshTokenDoc) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Not found');
   }
@@ -68,7 +68,7 @@ const resetPassword = async (resetPasswordToken, newPassword) => {
       throw new Error();
     }
     await userService.updateUserById(user.id, { password: newPassword });
-    await dB.tokens.destroy({ where: { user: user.id, type: tokenTypes.RESET_PASSWORD } });
+    await dB.tokens.destroy( { user: user.id, type: tokenTypes.RESET_PASSWORD } );
   } catch (error) {
     throw new ApiError(httpStatus.UNAUTHORIZED, error);
   }
@@ -86,7 +86,7 @@ const verifyEmail = async (verifyEmailToken) => {
     if (!user) {
       throw new Error();
     }
-    await dB.tokens.destroy({ where: { user: user.id, type: tokenTypes.VERIFY_EMAIL } });
+    await dB.tokens.destroy( { user: user.id, type: tokenTypes.VERIFY_EMAIL } );
     await userService.updateUserById(user.id, { isEmailVerified: true });
   } catch (error) {
     throw new ApiError(httpStatus.UNAUTHORIZED, 'Email verification failed');
@@ -105,7 +105,7 @@ const verifyEmailApp = async (verifyEmailToken, id) => {
     if (!user) {
       throw new Error();
     }
-    await dB.tokens.destroy({ where: { user: id, type: tokenTypes.VERIFY_EMAIL } });
+    await dB.tokens.destroy( { user: id, type: tokenTypes.VERIFY_EMAIL } );
     await userService.updateUserById(id, { isEmailVerified: true });
   } catch (error) {
     throw new ApiError(httpStatus.UNAUTHORIZED, 'Email verification failed');

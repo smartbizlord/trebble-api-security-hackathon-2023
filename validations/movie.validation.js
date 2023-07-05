@@ -1,14 +1,23 @@
 const Joi = require('joi');
 
-    const streamMovie = {
-    headers: Joi.object().keys({
-      range: Joi.string().required(),
-    }),
+  const getWithPagination = {
     query: Joi.object().keys({
-      movie: Joi.string().required(),
-      token: Joi.string(),
+      page: Joi.string().required(),
+      limit: Joi.string().required(),
+      where: Joi.string(),
     }),
-  };
+    body: Joi.object().keys({}),
+  }
+
+  const getById = {
+    query: Joi.object().keys({}),
+    body: Joi.object().keys({}),
+  }
+
+  const deleteById = {
+    query: Joi.object().keys({}),
+    body: Joi.object().keys({}),
+  }
 
   const downloadMovie = {
     query: Joi.object().keys({
@@ -19,6 +28,18 @@ const Joi = require('joi');
   const getMoviesByGenre = {
       body: Joi.object().keys({
         genre: Joi.string().required(),
+      }),
+    };
+
+    const addMovieGenre = {
+      body: Joi.object().keys({
+        genreName: Joi.string().required(),
+      }),
+    };
+
+    const addMovieCountry = {
+      body: Joi.object().keys({
+        movieName: Joi.string().required(),
       }),
     };
 
@@ -51,11 +72,32 @@ const Joi = require('joi');
       }),
   };
 
+  const updateMovie = {
+      body: Joi.object().keys({
+        movieTitle: Joi.string(),
+        movieDescription: Joi.string(),
+        movieThumbnail: Joi.string(),
+        releaseYear: Joi.number(),
+        movieCast: Joi.string(),
+        countryId: Joi.number(),
+        movieDirector: Joi.string(),
+        movieDuration: Joi.number(),
+        isActive: Joi.number(),
+        special: Joi.number(),
+        genreId: Joi.number(),
+      }),
+  };
+
   module.exports = {
-    streamMovie,
+    getWithPagination,
     downloadMovie,
     getMoviesByGenre,
     getMoviesByYear,
     getSpecialMovies,
     uploadMovies,
+    getById,
+    addMovieGenre,
+    addMovieCountry,
+    deleteById,
+    updateMovie,
   }
