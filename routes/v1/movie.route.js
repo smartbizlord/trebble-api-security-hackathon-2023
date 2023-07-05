@@ -36,11 +36,11 @@ router.route('/:id')
     .get(cache.route(1800), allowedMethod, auth(), validate(movieValidation.getById), movieController.getMoviesById)
     .all(unAllowedMethod)
 
-router.route('/genres:id')
+router.route('/genres/:id')
     .get(cache.route(1800), allowedMethod, auth(), validate(movieValidation.getById), movieController.getGenresById)
     .all(unAllowedMethod)
 
-router.route('/countries:id')
+router.route('/countries/:id')
     .get(cache.route(1800), allowedMethod, auth(), validate(movieValidation.getById), movieController.getCountriesById)
     .all(unAllowedMethod)
 
