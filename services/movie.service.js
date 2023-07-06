@@ -112,6 +112,10 @@ const addCountries = async (countryBody) => {
     return dB.countries.create(countryBody)
 }
 
+const movieUpload = async (body) => {
+    return dB.movies.create(body)
+}
+
 
 
 module.exports = {
@@ -127,4 +131,5 @@ module.exports = {
     deleteMovie,
     deleteGenre,
     deleteCountry,
+    movieUpload,
 }

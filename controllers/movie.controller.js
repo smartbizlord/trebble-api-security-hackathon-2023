@@ -5,8 +5,8 @@ const pick = require('../utils/pick');
 
 const uploadMovies = catchAsync(async (req, res) => {
     
-    await movieService.movieUpload(req, res)
-    res.status(httpStatus.NO_CONTENT).send({
+    await movieService.movieUpload(req.body)
+    res.status(httpStatus.CREATED).send({
         message : "Movie upload successful"
       });
 })
