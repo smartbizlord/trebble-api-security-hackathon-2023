@@ -10,7 +10,7 @@ const errorConverter = (err, req, res, next) => {
     const statusCode =
       error.statusCode || error instanceof mongoose.Error ? httpStatus.BAD_REQUEST : httpStatus.INTERNAL_SERVER_ERROR;
     const message = error.message || httpStatus[statusCode];
-    if(message.indexOf("ObjectId") != -1) {
+    if(message.indexOf("Cast to ObjectId failed for value") != -1) {
       error = new ApiError(statusCode, "That is an invalid Id", false, err.stack);
     } else {
       error = new ApiError(statusCode, message, false, err.stack);
@@ -22,10 +22,11 @@ const errorConverter = (err, req, res, next) => {
 // eslint-disable-next-line no-unused-vars
 const errorHandler = (err, req, res, next) => {
   let { statusCode, message } = err;
-  if (config.env === 'production' && !err.isOperational) {
+  if ((config.env === 'production' && !err.isOperational) && message.indexOf("ObjectId") != -1) {
     statusCode = httpStatus.INTERNAL_SERVER_ERROR;
     message = httpStatus[httpStatus.INTERNAL_SERVER_ERROR];
   }
+
 
   res.locals.errorMessage = err.message;
 
