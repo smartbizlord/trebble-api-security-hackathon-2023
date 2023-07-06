@@ -112,9 +112,8 @@ const addCountries = async (countryBody) => {
     return dB.countries.create(countryBody)
 }
 
-const movieUpload = async (req) => {
-    console.log("File", req.file)
-    return 
+const movieUpload = async (body) => {
+    return dB.movies.create(body)
 }
 
 

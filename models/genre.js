@@ -10,6 +10,7 @@ const Schema = mongoose.Schema
     },
     isActive: {
       type: Boolean,
+      default: 0,
     },
   }, { timestamps: true });
 

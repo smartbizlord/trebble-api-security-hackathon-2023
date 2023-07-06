@@ -59,16 +59,17 @@ const Joi = require('joi');
       body: Joi.object().keys({
         movieTitle: Joi.string().required(),
         movieDescription: Joi.string().required(),
-        movieThumbnail: Joi.string().required(),
+        movieThumbNail: Joi.string().required(),
+        movieLocation: Joi.string().required(),
         releaseYear: Joi.number().required(),
         movieCast: Joi.string().required(),
-        countryId: Joi.number().required(),
+        movieCountry: Joi.string().required(),
         movieDirector: Joi.string().required(),
         movieDuration: Joi.number().required(),
         watchedBy: Joi.string(),
         isActive: Joi.number().required(),
         special: Joi.number().required(),
-        genreId: Joi.number().required(),
+        genreId: Joi.string().required(),
       }),
   };
 
@@ -76,10 +77,10 @@ const Joi = require('joi');
       body: Joi.object().keys({
         movieTitle: Joi.string(),
         movieDescription: Joi.string(),
-        movieThumbnail: Joi.string(),
+        movieThumbNail: Joi.string(),
         releaseYear: Joi.number(),
         movieCast: Joi.string(),
-        countryId: Joi.number(),
+        movieCountry: Joi.number(),
         movieDirector: Joi.string(),
         movieDuration: Joi.number(),
         isActive: Joi.number(),

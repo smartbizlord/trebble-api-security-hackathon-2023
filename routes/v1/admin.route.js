@@ -24,7 +24,8 @@ if (config.env == 'production') {
 
 router.route('/movies')
     .get(cache.route(1800), allowedMethod, auth("getMoviesAdmin"), validate(movieValidation.getWithPagination), movieController.getMovies)
-    .post(allowedMethod, auth("uploadMoviesAdmin"), validate(movieValidation.uploadMovies), uploadMovieWithThumbNail.fields([{ name: 'movie', maxCount: 1 }, { name: 'thumbNail', maxCount: 1 }]), movieController.uploadMovies)
+    .post(allowedMethod, auth("uploadMoviesAdmin"), validate(movieValidation.uploadMovies), movieController.uploadMovies)
+    // .post(allowedMethod, auth("uploadMoviesAdmin"), validate(movieValidation.uploadMovies), uploadMovieWithThumbNail.fields([{ name: 'movie', maxCount: 1 }, { name: 'thumbNail', maxCount: 1 }]), movieController.uploadMovies)
     .all(unAllowedMethod)
 
 router.route('/genres')

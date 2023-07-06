@@ -26,16 +26,6 @@ const Schema = mongoose.Schema
     releaseYear : {
       type: String,
       required: true,
-      validate: {
-        validator(value) {
-          if (value.length > 4 || value.length < 4 || (!(Number(value) > 0) || !(Number(value) < 0)) || value <= 1894) {
-            return false
-          } else {
-            return true
-          }
-        },
-        message: 'this must be a valid release year',
-      }
     },
     movieCast : {
       type: String,
@@ -43,7 +33,7 @@ const Schema = mongoose.Schema
     },
     movieCountry : {
       type: mongoose.ObjectId,
-      ref: 'Genre',
+      ref: 'Country',
       required: true,
     },
     movieDirector : {
@@ -60,9 +50,11 @@ const Schema = mongoose.Schema
     },
     isActive: {
       type: Boolean,
+      default: 0
     },
     special: {
       type: Boolean,
+      default: 0
     },
     genreId: {
       type: mongoose.ObjectId,
