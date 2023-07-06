@@ -28,6 +28,20 @@ const moviesWithoutAuth = async (limit, page) => {
         return {movies, total: moviesCount, page, count, totalPages};
 };
 
+const moviesWithoutAuthAdmin = async (limit, page) => {
+    page = page || 0
+    let count = limit || 5
+    const moviesCount = await dB.movies.estimatedDocumentCount()
+    const movies = await dB.movies.find()
+    .skip(page * limit || 0)
+    .limit(limit || 5)
+    if (movies.length < count) {
+        count = movies.length
+    }
+    const totalPages = (moviesCount / count) || 0
+    return {movies, total: moviesCount, page, count, totalPages};
+};
+
 const getGenres = async (limit, page) => {
     page = page || 0
     let count = limit || 5
@@ -37,6 +51,19 @@ const getGenres = async (limit, page) => {
     const genres = await dB.genres.find({
         isActive: true,
     })
+    .skip(page * limit || 0)
+    .limit(limit || 5)
+    if (genres.length < count) {
+            count = genres.length
+        }
+    const totalPages = (genresCount / count) || 0
+    return {genres, total: genresCount, page, count, totalPages};
+};
+const getGenresAdmin = async (limit, page) => {
+    page = page || 0
+    let count = limit || 5
+    const genresCount = await dB.genres.estimatedDocumentCount({})
+    const genres = await dB.genres.find({})
     .skip(page * limit || 0)
     .limit(limit || 5)
     if (genres.length < count) {
@@ -55,6 +82,19 @@ const getCountries = async (limit, page) => {
     const countries = await dB.countries.find({
         isActive: true,
     })
+    .skip(page * limit || 0)
+    .limit(limit || 5)
+    if (countries.length < count) {
+            count = countries.length
+        }
+    const totalPages = (countriesCount / count) || 0
+    return {countries, total: countriesCount, page, count, totalPages};
+};
+const getCountriesAdmin = async (limit, page) => {
+    page = page || 0
+    let count = limit || 5
+    const countriesCount = await dB.countries.estimatedDocumentCount({})
+    const countries = await dB.countries.find({})
     .skip(page * limit || 0)
     .limit(limit || 5)
     if (countries.length < count) {
@@ -122,6 +162,9 @@ module.exports = {
     moviesWithoutAuth,
     getGenres,
     getCountries,
+    moviesWithoutAuthAdmin,
+    getGenresAdmin,
+    getCountriesAdmin,
     moviesWithoutAuthById,
     getGenresById,
     getCountriesById,
