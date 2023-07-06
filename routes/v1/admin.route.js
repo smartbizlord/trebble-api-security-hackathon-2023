@@ -23,47 +23,47 @@ if (config.env == 'production') {
 }
 
 router.route('/movies')
-    .get(cache.route(1800), allowedMethod, auth("getMovies"), validate(movieValidation.getWithPagination), movieController.getMovies)
-    .post(allowedMethod, auth("uploadMovies"), validate(movieValidation.uploadMovies), uploadMovieWithThumbNail.fields([{ name: 'movie', maxCount: 1 }, { name: 'thumbNail', maxCount: 1 }]), movieController.uploadMovies)
+    .get(cache.route(1800), allowedMethod, auth("getMoviesAdmin"), validate(movieValidation.getWithPagination), movieController.getMovies)
+    .post(allowedMethod, auth("uploadMoviesAdmin"), validate(movieValidation.uploadMovies), uploadMovieWithThumbNail.fields([{ name: 'movie', maxCount: 1 }, { name: 'thumbNail', maxCount: 1 }]), movieController.uploadMovies)
     .all(unAllowedMethod)
 
 router.route('/genres')
-    .get(cache.route(1800), allowedMethod, auth("getGenres"), validate(movieValidation.getWithPagination), movieController.getGenres)
-    .post(allowedMethod, auth("createGenres"), validate(movieValidation.addMovieGenre), movieController.addGenres)
+    .get(cache.route(1800), allowedMethod, auth("getGenresAdmin"), validate(movieValidation.getWithPagination), movieController.getGenres)
+    .post(allowedMethod, auth("createGenresAdmin"), validate(movieValidation.addMovieGenre), movieController.addGenres)
     .all(unAllowedMethod)
 
 router.route('/countries')
-    .get(cache.route(1800), allowedMethod, auth("getCountries"), validate(movieValidation.getWithPagination), movieController.getCountries)
-    .post(allowedMethod, auth("createCountry"), validate(movieValidation.addMovieCountry), movieController.addCountries)
+    .get(cache.route(1800), allowedMethod, auth("getCountriesAdmin"), validate(movieValidation.getWithPagination), movieController.getCountries)
+    .post(allowedMethod, auth("createCountryAdmin"), validate(movieValidation.addMovieCountry), movieController.addCountries)
     .all(unAllowedMethod)
 
 router.route('/users')
-    .get(cache.route(1800), allowedMethod, auth("getUsers"), validate(movieValidation.getWithPagination), userController.getUsers)
-    .post(allowedMethod, auth("manageUsers"), validate(authValidation.register), userController.createUser)
+    .get(cache.route(1800), allowedMethod, auth("getUsersAdmin"), validate(movieValidation.getWithPagination), userController.getUsers)
+    .post(allowedMethod, auth("manageUsersAdmin"), validate(authValidation.register), userController.createUser)
     .all(unAllowedMethod)
 
 
 
 router.route('/movies/:id')
-    .get(cache.route(1800), allowedMethod, auth("getMovies"), validate(movieValidation.getById), movieController.getMoviesById)
-    .patch(allowedMethod, auth("editMovies"), validate(movieValidation.updateMovie), movieController.updateMovie)
-    .delete(allowedMethod, auth("deleteMovies"), validate(movieValidation.deleteById), movieController.deleteMovie)
+    .get(cache.route(1800), allowedMethod, auth("getMoviesAdmin"), validate(movieValidation.getById), movieController.getMoviesById)
+    .patch(allowedMethod, auth("editMoviesAdmin"), validate(movieValidation.updateMovie), movieController.updateMovie)
+    .delete(allowedMethod, auth("deleteMoviesAdmin"), validate(movieValidation.deleteById), movieController.deleteMovie)
     .all(unAllowedMethod)
 
 router.route('/genres/:id')
-    .get(cache.route(1800), allowedMethod, auth("getGenres"), validate(movieValidation.getById), movieController.getGenresById)
-    .delete(allowedMethod, auth("deleteGenres"), validate(movieValidation.deleteById), movieController.deleteGenre)
+    .get(cache.route(1800), allowedMethod, auth("getGenresAdmin"), validate(movieValidation.getById), movieController.getGenresById)
+    .delete(allowedMethod, auth("deleteGenresAdmin"), validate(movieValidation.deleteById), movieController.deleteGenre)
     .all(unAllowedMethod)
 
 router.route('/countries/:id')
-    .get(cache.route(1800), allowedMethod, auth("getCountries"), validate(movieValidation.getById), movieController.getCountriesById)
-    .delete(allowedMethod, auth("deleteCountries"), validate(movieValidation.deleteById), movieController.deleteCountry)
+    .get(cache.route(1800), allowedMethod, auth("getCountriesAdmin"), validate(movieValidation.getById), movieController.getCountriesById)
+    .delete(allowedMethod, auth("deleteCountriesAdmin"), validate(movieValidation.deleteById), movieController.deleteCountry)
     .all(unAllowedMethod)
 
 router.route('/users/:id')
-    .get(cache.route(1800), allowedMethod, auth("getUser"), validate(movieValidation.getById), userController.getUser)
-    .patch(allowedMethod, auth("manageUsers"), validate(authValidation.updateUser), userController.updateUser)
-    .delete(allowedMethod, auth("manageUsers"), validate(authValidation.deleteUser), userController.deleteUser)
+    .get(cache.route(1800), allowedMethod, auth("getUserAdmin"), validate(movieValidation.getById), userController.getUser)
+    .patch(allowedMethod, auth("manageUsersAdmin"), validate(authValidation.updateUser), userController.updateUser)
+    .delete(allowedMethod, auth("manageUsersAdmin"), validate(authValidation.deleteUser), userController.deleteUser)
     .all(unAllowedMethod)
 
 
