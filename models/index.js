@@ -18,6 +18,7 @@ mongooseInstance
 })
 .catch(err => {
   logger.error('Database connection error', err);
+  throw new Error(`Config validation error: ${err.message}`);
 })
 
 dB.mongo = mongooseInstance
