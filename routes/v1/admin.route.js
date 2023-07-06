@@ -23,18 +23,18 @@ if (config.env == 'production') {
 }
 
 router.route('/movies')
-    .get(cache.route(1800), allowedMethod, auth("getMoviesAdmin"), validate(movieValidation.getWithPagination), movieController.getMovies)
+    .get(cache.route(1800), allowedMethod, auth("getMoviesAdmin"), validate(movieValidation.getWithPagination), movieController.getMoviesAdmin)
     .post(allowedMethod, auth("uploadMoviesAdmin"), validate(movieValidation.uploadMovies), movieController.uploadMovies)
     // .post(allowedMethod, auth("uploadMoviesAdmin"), validate(movieValidation.uploadMovies), uploadMovieWithThumbNail.fields([{ name: 'movie', maxCount: 1 }, { name: 'thumbNail', maxCount: 1 }]), movieController.uploadMovies)
     .all(unAllowedMethod)
 
 router.route('/genres')
-    .get(cache.route(1800), allowedMethod, auth("getGenresAdmin"), validate(movieValidation.getWithPagination), movieController.getGenres)
+    .get(cache.route(1800), allowedMethod, auth("getGenresAdmin"), validate(movieValidation.getWithPagination), movieController.getGenresAdmin)
     .post(allowedMethod, auth("createGenresAdmin"), validate(movieValidation.addMovieGenre), movieController.addGenres)
     .all(unAllowedMethod)
 
 router.route('/countries')
-    .get(cache.route(1800), allowedMethod, auth("getCountriesAdmin"), validate(movieValidation.getWithPagination), movieController.getCountries)
+    .get(cache.route(1800), allowedMethod, auth("getCountriesAdmin"), validate(movieValidation.getWithPagination), movieController.getCountriesAdmin)
     .post(allowedMethod, auth("createCountryAdmin"), validate(movieValidation.addMovieCountry), movieController.addCountries)
     .all(unAllowedMethod)
 

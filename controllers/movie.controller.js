@@ -61,11 +61,23 @@ const getMovies = catchAsync(async (req, res) => {
     const movies = await movieService.moviesWithoutAuth(limit.limit, page.page);
     res.status(httpStatus.OK).send(movies)
 });
+const getMoviesAdmin = catchAsync(async (req, res) => {
+    const page = pick(req.query, ['page']);
+    const limit = pick(req.query, ['limit']);
+    const movies = await movieService.moviesWithoutAuthAdmin(limit.limit, page.page);
+    res.status(httpStatus.OK).send(movies)
+});
 
 const getGenres = catchAsync(async (req, res) => {
     const page = pick(req.query, ['page']);
     const limit = pick(req.query, ['limit']);
     const genres = await movieService.getGenres(limit.limit, page.page);
+    res.status(httpStatus.OK).send(genres)
+});
+const getGenresAdmin = catchAsync(async (req, res) => {
+    const page = pick(req.query, ['page']);
+    const limit = pick(req.query, ['limit']);
+    const genres = await movieService.getGenresAdmin(limit.limit, page.page);
     res.status(httpStatus.OK).send(genres)
 });
 
@@ -80,6 +92,12 @@ const getCountries = catchAsync(async (req, res) => {
     const page = pick(req.query, ['page']);
     const limit = pick(req.query, ['limit']);
     const countries = await movieService.getCountries(limit.limit, page.page);
+    res.status(httpStatus.OK).send(countries)
+});
+const getCountriesAdmin = catchAsync(async (req, res) => {
+    const page = pick(req.query, ['page']);
+    const limit = pick(req.query, ['limit']);
+    const countries = await movieService.getCountriesAdmin(limit.limit, page.page);
     res.status(httpStatus.OK).send(countries)
 });
 
@@ -128,6 +146,9 @@ module.exports = {
     getMovies,
     getGenres,
     getCountries,
+    getMoviesAdmin,
+    getGenresAdmin,
+    getCountriesAdmin,
     getMoviesById,
     getGenresById,
     getCountriesById,
