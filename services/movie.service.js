@@ -112,6 +112,11 @@ const addCountries = async (countryBody) => {
     return dB.countries.create(countryBody)
 }
 
+const movieUpload = async (req) => {
+    console.log("File", req.file)
+    return 
+}
+
 
 
 module.exports = {
@@ -127,4 +132,5 @@ module.exports = {
     deleteMovie,
     deleteGenre,
     deleteCountry,
+    movieUpload,
 }
