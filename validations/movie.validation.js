@@ -39,7 +39,7 @@ const Joi = require('joi');
 
     const addMovieCountry = {
       body: Joi.object().keys({
-        movieName: Joi.string().required(),
+        countryName: Joi.string().required(),
       }),
     };
 
