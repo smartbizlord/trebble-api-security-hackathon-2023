@@ -43,7 +43,7 @@ const Schema = mongoose.Schema
     },
     movieCountry : {
       type: mongoose.ObjectId,
-      ref: 'Genre',
+      ref: 'Country',
       required: true,
     },
     movieDirector : {

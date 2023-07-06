@@ -60,15 +60,16 @@ const Joi = require('joi');
         movieTitle: Joi.string().required(),
         movieDescription: Joi.string().required(),
         movieThumbnail: Joi.string().required(),
+        movieLocation: Joi.string().required(),
         releaseYear: Joi.number().required(),
         movieCast: Joi.string().required(),
-        countryId: Joi.number().required(),
+        countryId: Joi.string().required(),
         movieDirector: Joi.string().required(),
         movieDuration: Joi.number().required(),
         watchedBy: Joi.string(),
         isActive: Joi.number().required(),
         special: Joi.number().required(),
-        genreId: Joi.number().required(),
+        genreId: Joi.string().required(),
       }),
   };
 
