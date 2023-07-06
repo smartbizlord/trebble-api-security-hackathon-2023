@@ -43,7 +43,7 @@ const sendVerificationEmail = catchAsync(async (req, res) => {
   if(fromapp != "yes"){
     const verifyEmailToken = await tokenService.generateVerifyEmailToken(req.user);
     await emailService.sendVerificationEmail(req.user.email, verifyEmailToken);
-    res.status(httpStatus.NO_CONTENT).send();
+    res.status(httpStatus.OK).send({message: "Email Sent successfully"});
   } else {
     const verifyEmailToken = await tokenService.generateVerifyEmailTokenApp(req.user);
     await emailService.sendVerificationEmailApp(req.user.email, verifyEmailToken);
@@ -55,7 +55,7 @@ const verifyEmail = catchAsync(async (req, res) => {
   let fromapp = req.headers.fromapp;
   if(fromapp != "yes") {
     await authService.verifyEmail(req.query.token);
-    res.status(httpStatus.NO_CONTENT).send();
+    res.status(httpStatus.OK).send({message: "Email Verified successfully"});
   } else {
     await authService.verifyEmailApp(req.query.token, req.user.id);
     res.status(httpStatus.NO_CONTENT).send();
