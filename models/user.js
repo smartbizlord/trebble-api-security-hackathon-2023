@@ -69,12 +69,15 @@ const Users = new Schema({
   },
   isEmailVerified: {
     type: Boolean,
+    default: 0,
   },
   isPhoneVerified: {
     type: Boolean,
+    default: 0,
   },
   blacklisted: {
     type: Boolean,
+    default: 0,
   },
   lastLogin : Date,
 }, { timestamps: true })
