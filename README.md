@@ -46,6 +46,7 @@ after the dependencies are installed, type `npm start` and visit the version 1.0
 
 > All endpoints accept JSON objects and returns JSON objects
 > All admin endpoints can only be accesed by admin level users, so in order to test that create an extra user and set the useRole to admin
+> All resources are initialized with is ACtive set to false so you have to update resources that you feel are ready for the viewers
 
 | endpoint | method | request payload |
 | --- | --- | --- |
