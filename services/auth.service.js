@@ -68,7 +68,7 @@ const resetPassword = async (resetPasswordToken, newPassword) => {
       throw new Error();
     }
     await userService.updateUserById(user._id, { password: newPassword });
-    await dB.tokens.delete( { user: user._id, type: tokenTypes.RESET_PASSWORD } );
+    await dB.tokens.deleteMany( { user: user._id, type: tokenTypes.RESET_PASSWORD } );
   } catch (error) {
     throw new ApiError(httpStatus.UNAUTHORIZED, error);
   }
@@ -86,7 +86,7 @@ const verifyEmail = async (verifyEmailToken) => {
     if (!user) {
       throw new Error();
     }
-    await dB.tokens.delete( { user: user._id, type: tokenTypes.VERIFY_EMAIL } );
+    await dB.tokens.deleteMany( { user: user._id, type: tokenTypes.VERIFY_EMAIL } );
     await userService.updateUserById(user._id, { isEmailVerified: true });
   } catch (error) {
     throw new ApiError(httpStatus.UNAUTHORIZED, 'Email verification failed');
@@ -105,7 +105,7 @@ const verifyEmailApp = async (verifyEmailToken, id) => {
     if (!user) {
       throw new Error();
     }
-    await dB.tokens.delete( { user: id, type: tokenTypes.VERIFY_EMAIL } );
+    await dB.tokens.deleteMany( { user: id, type: tokenTypes.VERIFY_EMAIL } );
     await userService.updateUserById(id, { isEmailVerified: true });
   } catch (error) {
     throw new ApiError(httpStatus.UNAUTHORIZED, 'Email verification failed');
